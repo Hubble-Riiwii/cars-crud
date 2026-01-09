@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+footer {
+    background-color: #FFFFFF;
+    padding-top: 3.75rem;
+}
+
+#footer-title {
+    color: #3563E9;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: .625rem;
+}
+
+.footer-text {
+    color: #13131399;
+    font-weight: 500;
+    font-size: 1rem;
+    max-width: 17.5rem;
+    margin-top: .625rem;
+    margin-bottom: .625rem;
+}
+
+.footer-subtitle {
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-last {
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 3.75rem;
+}
