@@ -37,3 +37,11 @@ footer {
     font-size: 1rem;
     margin-bottom: 3.75rem;
 }
+
+@media (max-width: 576px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
