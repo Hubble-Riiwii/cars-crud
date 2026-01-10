@@ -1,6 +1,7 @@
 body {
     background-color: #F6F7F9;
-
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 #header {
@@ -53,12 +54,53 @@ body {
     background: #54A6FF;
     color: white;
 }
-
+.relative{
+    position: relative;
+}
 #btn_left:hover,
 #btn_right:hover {
     transform: scale(1.1);
 }
+/* Sections */
+.section-title{
+    color: #90A3BF;
+    font-size: 1rem;
+    margin: 0 0 2rem 0;
+}
+.secondary-text{
+    color:#90A3BF;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-content: center;
+}
+.primary-background{
+    background-color:#3563E9;
+}
+/* Cards */
+    .card-title{
+        color: #1A202C;
+        font-size: 1.25rem;
+    }
+    .card-subtitle{
+        color:#90A3BF;
+        font-size: .875rem;
+    }
+    .card-item{
+        border: none;
+        padding: 1rem;
+    }
+    .card-img-container{
+        height: 10rem;
+        overflow: hidden;
+        padding: 3rem 0;
+        box-sizing: border-box;
 
+    }
+    .card-price{
+        font-size: 1.25rem;
+        color: #000;
+        font-weight: 700;
+    }
 /*SEARCH*/
 #search-section{
     background-color: white;
@@ -79,4 +121,60 @@ body {
     top: 50%;
     transform: translateY(-50%);
     color: #6c757d;
+}
+/* Footer */
+footer {
+    background-color: #FFFFFF;
+    padding-top: 3.75rem;
+}
+
+#footer-title {
+    color: #3563E9;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: .625rem;
+}
+
+.footer-text {
+    color: #13131399;
+    font-weight: 500;
+    font-size: 1rem;
+    max-width: 17.5rem;
+    margin-top: .625rem;
+    margin-bottom: .625rem;
+}
+
+.footer-subtitle {
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-last {
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 3.75rem;
+}
+/* Icons */
+.hearth-icon-full{
+    content : url("../assets/icons/hearth-full.svg");
+}
+.top-right-icon{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+.hearth-icon-empty{
+    content : url("../assets/icons/hearth-empty.svg");
+}
+.manual-icon{
+    content : url("../assets/icons/manual.svg");
+}
+.profile-2-users-icon{
+    content : url("../assets/icons/profile-2user.svg");
+}
+.gas-station-icon{
+    content : url("../assets/icons/gas-station.svg");
 }
