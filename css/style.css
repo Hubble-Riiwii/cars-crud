@@ -176,9 +176,10 @@ body {
 }
 
 @media (max-width: 768px) {
-  #hidden_section {
+    #hidden_section {
     display: block; /* O 'flex', 'grid', etc. */
-  }
+    }
+}
 /* Footer */
 footer {
     background-color: #FFFFFF;
