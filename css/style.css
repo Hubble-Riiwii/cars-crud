@@ -61,6 +61,12 @@ body {
 #btn_right:hover {
     transform: scale(1.1);
 }
+.btn-sm{
+    padding: .5rem 1rem;
+    max-height: 2.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
 /* Sections */
 .section-title{
     color: #90A3BF;
@@ -73,6 +79,9 @@ body {
     display: inline-flex;
     align-content: center;
 }
+.discount-text{
+    text-decoration: line-through;
+}
 .primary-background{
     background-color:#3563E9;
 }
@@ -80,6 +89,7 @@ body {
     .card-title{
         color: #1A202C;
         font-size: 1.25rem;
+        font-weight:700 ;
     }
     .card-subtitle{
         color:#90A3BF;
@@ -90,7 +100,6 @@ body {
         padding: 1rem;
     }
     .card-img-container{
-        height: 10rem;
         overflow: hidden;
         padding: 3rem 0;
         box-sizing: border-box;
@@ -100,6 +109,7 @@ body {
         font-size: 1.25rem;
         color: #000;
         font-weight: 700;
+        line-height: .8;
     }
 /*SEARCH*/
 #search-section{
@@ -160,6 +170,7 @@ footer {
 /* Icons */
 .hearth-icon-full{
     content : url("../assets/icons/hearth-full.svg");
+    cursor: pointer;
 }
 .top-right-icon{
     position: absolute;
@@ -168,6 +179,7 @@ footer {
 }
 .hearth-icon-empty{
     content : url("../assets/icons/hearth-empty.svg");
+    cursor: pointer;
 }
 .manual-icon{
     content : url("../assets/icons/manual.svg");
