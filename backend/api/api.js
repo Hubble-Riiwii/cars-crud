@@ -1,5 +1,5 @@
 export default class API{
-    db = "http://localhost:3000/db.json";
+    db = "http://localhost:3000";
     async FetchCars(){
         try {
             const response = await fetch(this.db+"/cars", {
@@ -32,7 +32,7 @@ export default class API{
         try{
             const response = await fetch(this.db+"/cars", {
                 method:"POST", 
-                headers: {"Content-Type": "application/json"},
+                headers: {"Content-Type":"application/json"},
                 body:JSON.stringify(car)
             });
             if(!response.ok){
@@ -46,27 +46,27 @@ export default class API{
             return null;
         }
     }
-    async getUser(username, password, email){
+    async getUser(username, password){
         try{
-            const response = await fetch(this.db+"/users:username?"+username, {
+            let response = await fetch(this.db+"/users?username="+username, {
                 method: "GET",
                 headers: {"Content-Type": "application/json"}
             });
             if(!response.ok){
                 throw new Error(`HTTP Error! status ${response.status}`);
             }
-            const data = await response.json();
-            if (await data === null){
-                response = await fetch(this.db+"/users:email?"+email, {
+            let data = await response.json();
+            if (await data.length === 0){
+                //solve typeerror: NetworkError when attempting to fetch resource.
+                response = await fetch(this.db+"/users?email="+username, {
                     method: "GET",
                     headers: {"Content-Type":"application/json"}
                 });
                 data = await response.json()
             }
-            if (await data?.password == password){
-                return data;
+            if (await data[0]?.password == password){
+                return data[0];
             } else{
-                console.warn("Contraseña incorrecta");
                 return null
             }
         } catch(error){
@@ -83,7 +83,7 @@ export default class API{
         try{
             const response = await fetch(this.db+"/users", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {"Content-Type":'application/json'},
                 body: JSON.stringify(user)
             })
             if(!response.ok){

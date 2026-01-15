@@ -132,6 +132,9 @@ body {
     transform: translateY(-50%);
     color: #6c757d;
 }
+.hidden{
+    display: none;
+}
 /* Footer */
 footer {
     background-color: #FFFFFF;

@@ -1,1 +1,47 @@
-{}
+{
+  "users": [
+    {
+      "id": "26c2",
+      "username": "user",
+      "email": "user@email",
+      "password": "123456"
+    },
+    {
+      "id": "3e4a",
+      "username": "user2",
+      "email": "user@email",
+      "password": "1234567"
+    },
+    {
+      "id": "8080",
+      "username": "user3",
+      "email": "user@email",
+      "password": "123456"
+    },
+    {
+      "id": "537f",
+      "username": "user4",
+      "email": "user@email",
+      "password": "159753"
+    },
+    {
+      "id": "cab4",
+      "username": "user5",
+      "email": "user@email",
+      "password": "159753"
+    },
+    {
+      "id": "99a0",
+      "username": "user6",
+      "email": "user@email",
+      "password": "159753"
+    },
+    {
+      "id": "e9a4",
+      "username": "user7",
+      "email": "user@email",
+      "password": "753159"
+    }
+  ],
+  "cars": []
+}
