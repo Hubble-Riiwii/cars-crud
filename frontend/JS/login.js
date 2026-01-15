@@ -9,13 +9,13 @@ const login = async (username, password)=>{
     return user;
 }
 form.addEventListener("submit",async e=>{
+    e.preventDefault();
     const user = await login(userEmailInput.value, passwordInput.value);
-    if (user === null){
+    if (user == null){
         passwordInput.nextElementSibling.classList.remove("hidden");
-        e.preventDefault();
     } else{
         sessionStorage.username = user.username;
         sessionStorage.id = user.id
-        window.location = "./../index.html";
+        window.location = "./index.html";
     }
 })

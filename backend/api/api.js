@@ -47,32 +47,51 @@ export default class API{
         }
     }
     async getUser(username, password){
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; //Regex to verify if it's username or email
+        if (!emailRegex.test(username)){
         try{
-            let response = await fetch(this.db+"/users?username="+username, {
+            const response = await fetch(this.db+"/users?username="+username, {
                 method: "GET",
-                headers: {"Content-Type": "application/json"}
+                headers: {"Content-Type":"application/json"}
             });
             if(!response.ok){
                 throw new Error(`HTTP Error! status ${response.status}`);
             }
-            let data = await response.json();
-            if (await data.length === 0){
-                //solve typeerror: NetworkError when attempting to fetch resource.
-                response = await fetch(this.db+"/users?email="+username, {
-                    method: "GET",
-                    headers: {"Content-Type":"application/json"}
-                });
-                data = await response.json()
-            }
-            if (await data[0]?.password == password){
+            const data = await response.json();
+            if (data.length === 0){
+                return null
+            } else if (data[0]?.password === password){
                 return data[0];
             } else{
                 return null
             }
         } catch(error){
+            console.error(`Error\n ${error}`)
+            return null
+        }
+        } else{
+        try{
+            const response = await fetch(this.db+"/users?email="+username, {
+                method: "GET",
+                headers: {"Content-Type":"application/json"}
+            });
+            if(!response.ok){
+            throw new Error(`HTTP Error! status ${response.status}`);
+            }
+            const data = await response.json()
+            if (await data.length === 0){
+                return null
+            } else if (await data[0]?.password === password){
+                return data[0];
+            } else{
+                return null
+            }
+        } catch (error){
             console.error(`Error \n ${error}`)
             return null
         }
+        }
+        
     }
     async createUser(username, password, email){
         const user = {

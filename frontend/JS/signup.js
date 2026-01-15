@@ -26,7 +26,12 @@ form.addEventListener("submit", async e=>{
         return
     }
     const user = await signup(usernameInput.value, emailInput.value, passwordInput.value);
-    sessionStorage.username = await user.username;
-    sessionStorage.userId = await user.id
-    window.location = "./../index.html"
+    if (user !== null){
+        sessionStorage.username = user.username;
+        sessionStorage.userId = user.id
+        window.location = "./index.html"
+    } else{
+        console.error("Error, the user is null") // Change for a pop up
+        e.preventDefault();
+    }
 })
