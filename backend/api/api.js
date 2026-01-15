@@ -46,4 +46,54 @@ export default class API{
             return null;
         }
     }
+    async getUser(username, password, email){
+        try{
+            const response = await fetch(this.db+"/users:username?"+username, {
+                method: "GET",
+                headers: {"Content-Type": "application/json"}
+            });
+            if(!response.ok){
+                throw new Error(`HTTP Error! status ${response.status}`);
+            }
+            const data = await response.json();
+            if (await data === null){
+                response = await fetch(this.db+"/users:email?"+email, {
+                    method: "GET",
+                    headers: {"Content-Type":"application/json"}
+                });
+                data = await response.json()
+            }
+            if (await data?.password == password){
+                return data;
+            } else{
+                console.warn("Contraseña incorrecta");
+                return null
+            }
+        } catch(error){
+            console.error(`Error \n ${error}`)
+            return null
+        }
+    }
+    async createUser(username, password, email){
+        const user = {
+            username : username,
+            email : email,
+            password : password
+        }
+        try{
+            const response = await fetch(this.db+"/users", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(user)
+            })
+            if(!response.ok){
+                throw new Error(`HTTP Error! status ${response.status}`)
+            }
+            const data = await response.json();
+            return data;
+        } catch (error){
+            console.error(`Error \n ${error}`)
+            return null
+        }
+    }
 }
