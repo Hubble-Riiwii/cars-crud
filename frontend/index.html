@@ -18,21 +18,30 @@
 </head>
 
 <body>
+    
     <!--HEADER-->
     <header class="containe" id="header">
         <div class="row h-100 w-100">
             <div class="col-sm-6 d-flex align-items-center justify-content-center">
                 <div class="">
-                    <img src="./assets/CarsCrud-removebg 1.png" alt="">
+                    <img src="./assets/CarsCrud-removebg 1.png" alt="carscrud icon" title="CC">
                 </div>
                 <div class="BisnessName">
-                    <img src="./assets/Logo.png" alt="">
+                    <img src="./assets/Logo.png" alt="carscrud" title="CarsCrud">
                 </div>
 
             </div>
-            <div class="col-sm-6 d-flex justify-content-center align-items-center">
-                <div class="">
-                    <img src="./assets/Profil & Notification.png" alt="">
+            <div class="col-sm-6 d-flex justify-content-around align-items-center">
+                <div class="login-section col-sm-6 d-flex justify-content-end">
+                    <div class="profile-picture col-sm-2">
+                        <img src="./assets/icons/user-symbol.svg" alt="profile-image" id="profile-image">
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="./sign_up.html" class="btn btn-info">Sign up</a>
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="./log_in.html" class="btn btn-info">Log in</a>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -384,6 +393,14 @@
         </div>
     </footer>
     <script src="./JS/script.js"></script>
+    <script>
+        if(sessionStorage.username !== undefined){
+            document.getElementById("profile-image").setAttribute("src", "./assets/users/Profil & Notification.png");
+            const childrenLogin = document.querySelector(".login-section").children;
+            childrenLogin[1].remove() //remove sign in from domain
+            childrenLogin[1].remove() // remove log in from domain
+        }
+    </script>
 </body>
 
 </html>
