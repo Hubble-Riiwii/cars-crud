@@ -14,8 +14,11 @@ form.addEventListener("submit",async e=>{
     if (user == null){
         passwordInput.nextElementSibling.classList.remove("hidden");
     } else{
-        sessionStorage.username = user.username;
-        sessionStorage.id = user.id
+        sessionStorage.setItem("username", user.username);
+        sessionStorage.setItem("id", user.id)
+        if(user?.admin){
+            sessionStorage.setItem("admin", "true")
+        }
         window.location = "./index.html";
     }
 })
