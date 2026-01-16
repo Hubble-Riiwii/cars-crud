@@ -1,4 +1,4 @@
-export default class car{
+export default class Car{
     constructor(id, name, type, TotalPrice, image, litersCapacity, isFavorite, isManual, capacity, Discount = 0){
         this.id = id;
         this.name = name;
@@ -12,7 +12,7 @@ export default class car{
         this.Discount = Discount;
         this.isFavorite = isFavorite;
     }
-    getHtmlCar(){
+    getCarCard(){
         let spanDiscount = this.Discount != 0 ? `<span class="secondary-text discount-text">${this.TotalPrice}.00</span>`: "";
         const carHTML = document.createElement("div"); carHTML.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
         carHTML.innerHTML = `
@@ -36,8 +36,35 @@ export default class car{
                 `;
         return carHTML;
     }
+    getCarTable(){
+        const carRow = document.createElement("tr"); carRow.setAttribute("id", this.id+"-car");
+        carRow.innerHTML = `
+            <td class="id-table">${this.id}</td>
+            <td class="name-table">${this.name}</td>
+            <td class="type-table">${this.type}</td>
+            <td class="img-table">${this.image}</td>
+            <td class="totalPrice-table">${this.TotalPrice}</td>
+            <td class="discount-table">${this.Discount}</td>
+            <td class="litersCapacity-table">${this.litersCapacity}</td>
+            <td class="isManual-table">${this.isManual}</td>
+            <td class="peopleCapacity-table">${this.capacity}</td>
+        `;
+    }
     static RentCar(){
         //Future Update
         console.log("Car rented")
+    }
+    static async getAllCars(db){
+        const cars = await db?.FetchCars();
+        console.log(cars)
+        const carArray = [];
+        if(cars === null || typeof(cars) !== "object"){
+            console.warn("No cars fetched")
+            return null
+        }
+        for (c of cars){
+            console.log(c)
+        }
+        return carArray;
     }
 }

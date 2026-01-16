@@ -1,16 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="./dashboard.css">
 </head>
+
 <body>
     <script>
-        if (sessionStorage.getItem("admin")===null || sessionStorage.getItem("admin")!== "true"){
+        if (sessionStorage.getItem("admin") === null || sessionStorage.getItem("admin") !== "true") {
             location = "./../index.html";
         }
     </script>
-    
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <div class="dropdown">
+            <a class="text-white dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> Admin
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#" id="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar p-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link" href="#"><i class="bi bi-people"></i>Users</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link" href="#"><i class="bi bi-box"></i> Products</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Main content -->
+            <main class="col-md-10 ms-sm-auto px-4 py-4">
+                <h2 class="mb-4">Dashboard</h2>
+                <!-- Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-bg-primary">
+                            <div class="card-body">
+                                <h5>Users</h5>
+                                <h3 id="amount-users">1,245</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-bg-success">
+                            <div class="card-body">
+                                <h5>Sales</h5>
+                                <h3 id="amount-sales">$8,430</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-bg-warning">
+                            <div class="card-body">
+                                <h5>Orders</h5>
+                                <h3 id="amount-orders">320</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-bg-danger">
+                            <div class="card-body">
+                                <h5>Issues</h5>
+                                <h3 id="amount-issues">7</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table -->
+                <div class="card">
+                    <div class="card-header">
+                        Cars
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped mb-0" id="table-cars">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>image</th>
+                                    <th>TotalPrice</th>
+                                    <th>Discount</th>
+                                    <th>litersCapacity</th>
+                                    <th>isManual</th>
+                                    <th>People Capacity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><button type="button" class="badge bg-success" id="create-car-btn">Crear</button></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="Name..." id="inputNameCar"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="Type..." id="inputTypeCar"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="URL..." id="inputImageCar"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="Total Price..." id="inputPriceCar"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="Discount..." id="inputDiscountCar"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="liters Capacity..." id="inputLiterCapacityCar"></td>
+                                    <td><input type="checkbox" class="form-check-input mt-0" id="inputIsManual"></td>
+                                    <td><input type="text" class="form-control overflow-input" placeholder="People Capacity..." id="inputPeopleCapacityCar"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Mark Lee</td>
+                                    <td>mark@example.com</td>
+                                    <td><span class="badge bg-danger">Blocked</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/constructCars.js" type="module"></script>
 </body>
+
 </html>
