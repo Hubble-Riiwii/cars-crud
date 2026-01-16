@@ -20,7 +20,7 @@
 <body>
     
     <!--HEADER-->
-    <header class="containe" id="header">
+    <header class="container" id="header">
         <div class="row h-100 w-100">
             <div class="col-sm-6 d-flex align-items-center justify-content-center">
                 <div class="">
@@ -393,14 +393,6 @@
         </div>
     </footer>
     <script src="./JS/script.js"></script>
-    <script>
-        if(sessionStorage.username !== undefined){
-            document.getElementById("profile-image").setAttribute("src", "./assets/users/Profil & Notification.png");
-            const childrenLogin = document.querySelector(".login-section").children;
-            childrenLogin[1].remove() //remove sign in from domain
-            childrenLogin[1].remove() // remove log in from domain
-        }
-    </script>
 </body>
 
 </html>

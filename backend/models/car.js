@@ -14,7 +14,7 @@ export default class car{
     }
     getHtmlCar(){
         let spanDiscount = this.Discount != 0 ? `<span class="secondary-text discount-text">${this.TotalPrice}.00</span>`: "";
-        const carHTML = document.createElement("div"); carHTML.classList.add("col-12 col-sm-6 col-md-4 col-lg-3");
+        const carHTML = document.createElement("div"); carHTML.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
         carHTML.innerHTML = `
                     <div class="card card-item relative h-100"> 
                         <i class="${this.isFavorite ? "hearth-icon-full" : "hearth-icon-empty"} top-right-icon"></i>
