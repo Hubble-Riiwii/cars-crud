@@ -1,4 +1,4 @@
-import Car from "../../../backend/models/car.js";
+import Car from "../../../backend/models/Car.js";
 import API from "../../../backend/api/api.js";
 import Alert from "../../../backend/models/alerts.js";
 import { debounce } from "../../../backend/models/functions.js";
@@ -13,9 +13,16 @@ const inputIsManual = document.getElementById("inputIsManual");
 const inputPeopleCapacityCar= document.getElementById("inputPeopleCapacityCar");
 let check = false;
 const createCarBtn = document.getElementById("create-car-btn");
-const getAllCars = ()=>{
-    return Car.getAllCars(db)
+
+const getAllCars = async ()=>{
+    const cars = await Car.getAllCars(db)
+    for(const car of cars){
+        const tr = car.getCarTable();
+        document.querySelector("#table-cars tbody").appendChild(tr);
+    }
 }
+
+console.log(await getAllCars())
 const verifyContent = (event)=>{
     check = true;
     let RegexPositiveInteger = /^[1-9]\d*$/;

@@ -1,19 +1,19 @@
 export default class Car{
-    constructor(id, name, type, TotalPrice, image, litersCapacity, isFavorite, isManual, capacity, Discount = 0){
+    constructor(id, name, type, totalPrice, image, litersCapacity, isFavorite, isManual, capacity, discount = 0){
         this.id = id;
         this.name = name;
         this.type = type;
         this.image = image;
-        this.TotalPrice = TotalPrice;
-        this.price = TotalPrice - (TotalPrice*Discount);
+        this.totalPrice = totalPrice;
+        this.price = totalPrice - (totalPrice*discount);
         this.litersCapacity = litersCapacity;
         this.isManual = isManual;
         this.capacity = capacity;
-        this.Discount = Discount;
+        this.discount = discount;
         this.isFavorite = isFavorite;
     }
     getCarCard(){
-        let spanDiscount = this.Discount != 0 ? `<span class="secondary-text discount-text">${this.TotalPrice}.00</span>`: "";
+        let spanDiscount = this.discount != 0 ? `<span class="secondary-text discount-text">${this.totalPrice}.00</span>`: "";
         const carHTML = document.createElement("div"); carHTML.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
         carHTML.innerHTML = `
                     <div class="card card-item relative h-100"> 
@@ -43,12 +43,13 @@ export default class Car{
             <td class="name-table">${this.name}</td>
             <td class="type-table">${this.type}</td>
             <td class="img-table">${this.image}</td>
-            <td class="totalPrice-table">${this.TotalPrice}</td>
-            <td class="discount-table">${this.Discount}</td>
+            <td class="totalPrice-table">${this.totalPrice}</td>
+            <td class="discount-table">${this.discount}</td>
             <td class="litersCapacity-table">${this.litersCapacity}</td>
             <td class="isManual-table">${this.isManual}</td>
             <td class="peopleCapacity-table">${this.capacity}</td>
         `;
+        return carRow
     }
     static RentCar(){
         //Future Update
@@ -56,14 +57,14 @@ export default class Car{
     }
     static async getAllCars(db){
         const cars = await db?.FetchCars();
-        console.log(cars)
         const carArray = [];
         if(cars === null || typeof(cars) !== "object"){
             console.warn("No cars fetched")
             return null
         }
-        for (c of cars){
-            console.log(c)
+        for (const c of cars){
+            const newCar = new Car(c.id, c.name, c.type, c.totalPrice, c.image, c.litersCapacity, false, c.isManual, c.capacity, c.discount)
+            carArray.push(newCar)
         }
         return carArray;
     }
