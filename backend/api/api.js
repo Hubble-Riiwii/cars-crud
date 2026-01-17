@@ -21,12 +21,12 @@ export default class API{
             name: name,
             type : type,
             image : img,
-            TotalPrice : totalPrice,
+            totalPrice : totalPrice,
             price : totalPrice - (totalPrice*discount),
             litersCapacity : litersCapacity,
             isManual : isManual,
             capacity : capacity,
-            Discount : discount,
+            discount : discount,
             isFavorite : false,
         }
         try{
@@ -39,7 +39,6 @@ export default class API{
                 throw new Error(`HTTP Error! status ${response.status}`);
             }
             const data = await response.json()
-            console.log('Success:', data);
             return data;
         } catch(error){
             console.error(`Error \n ${error}`);

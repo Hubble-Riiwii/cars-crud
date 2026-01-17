@@ -44,5 +44,19 @@
       "password": "753159"
     }
   ],
-  "cars": []
+  "cars": [
+    {
+      "id": "e892",
+      "name": "Koenigsegg",
+      "type": "Sport",
+      "image": "./assets/cars/car_koenigsegg.png",
+      "totalPrice": "99.00",
+      "price": 99,
+      "litersCapacity": "90",
+      "isManual": true,
+      "capacity": "2",
+      "discount": "0",
+      "isFavorite": false
+    }
+  ]
 }
