@@ -29,7 +29,7 @@ const createCar = ()=>{
     })()
     if (checks){
         const car = db.CreateCar(inputNameCar.value, inputTypeCar.value, inputPriceCar.value, inputPeopleCapacityCar.value, inputIsManual.checked, inputLiterCapacityCar.value, inputImageCar.value, inputDiscountCar.value);
-        
+
     }
 }
 const createCarBtn = document.getElementById("create-car-btn");
