@@ -57,6 +57,19 @@
       "capacity": "2",
       "discount": "0",
       "isFavorite": false
+    },
+    {
+      "id": "084f",
+      "name": "casdc",
+      "type": "asdcfasdc",
+      "image": "\t./assets/cars/car_koenigsegg.png",
+      "totalPrice": "15000",
+      "price": 12000,
+      "litersCapacity": "90",
+      "isManual": true,
+      "capacity": "2",
+      "discount": "0.2",
+      "isFavorite": false
     }
   ]
 }

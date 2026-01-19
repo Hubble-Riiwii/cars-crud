@@ -27,7 +27,7 @@ const verifyContent = (event)=>{
     check = true;
     let RegexPositiveInteger = /^[1-9]\d*$/;
     let RegexPositiveFloat = /^(?:[1-9]\d*|0)\.\d+|^[1-9]\d*$/;
-    let RegexZeroToOne2Decimals = /^(?:0(?:\.\d{1,2})?|1(?:\.0{1,2})?)$/;
+    //let RegexZeroToOne2Decimals = /^(?:0(?:\.\d{1,2})?|1(?:\.0{1,2})?)$/;
     let RegexImageUrl = /^(?!.*\s).+\.(jpg|jpeg|svg|webp|png|gif)$/i;
 
     if(inputPriceCar === event.target){
@@ -39,7 +39,7 @@ const verifyContent = (event)=>{
         check = tmpcheck && check;
     } 
     if(inputDiscountCar === event.target){
-        let tmpcheck = RegexZeroToOne2Decimals.test(inputDiscountCar.value);
+        let tmpcheck = RegexPositiveFloat.test(inputDiscountCar.value);
         if(!tmpcheck){
             inputDiscountCar.setCustomValidity('This field is wrong!');
             inputDiscountCar.reportValidity()
@@ -85,7 +85,7 @@ const createCar = ()=>{
         return car
     } else{
         Alert({ title: "There are invalid values!!",
-             text: "Please rectify",return: false })
+            text: "Please rectify",return: false })
         return null
     }
 }

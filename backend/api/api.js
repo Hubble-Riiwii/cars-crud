@@ -22,7 +22,7 @@ export default class API{
             type : type,
             image : img,
             totalPrice : totalPrice,
-            price : totalPrice - (totalPrice*discount),
+            price : totalPrice - (totalPrice*(discount/100)),
             litersCapacity : litersCapacity,
             isManual : isManual,
             capacity : capacity,
