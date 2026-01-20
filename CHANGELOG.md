@@ -10,6 +10,7 @@ and this project follows [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Removed API.js
 - Car listing page
 - Ability to add cars for rent
 - Ability to rent available cars

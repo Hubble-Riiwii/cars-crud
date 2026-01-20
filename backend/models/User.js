@@ -1,10 +1,10 @@
 export default class User{
-    static db;
-    constructor(id, username, email, type, profileImage, ownedCars, rentedCars, favoriteCars){
+    static db = "http://localhost:3000";
+    type = "user";
+    constructor(id, username, email, profileImage, ownedCars, rentedCars, favoriteCars){
         this.id = id;
         this.username = username;
         this.email = email;
-        this.type = type;
         this.profileImage = profileImage;
         this.ownedCarscars = ownedCars;
         this.rentedCars = rentedCars;
@@ -25,7 +25,7 @@ export default class User{
             if (data.length === 0){
                 return null
             } else if (data[0]?.password === password){
-                return data[0];
+                return new User(data[0].id, data[0].username, data[0].email, data[0]?.profileImage || "", data[0]?.ownedCars || [], data[0]?.rentedCars || [], data[0]?.favoriteCars || []);
             } else{
                 return null
             }
@@ -47,13 +47,16 @@ export default class User{
             console.error("error", error)
         }
     }
-    static async signUp(username, password, email, type){
+    static async signUp(username, password, email){
         //pass the sign up code here
         const user = {
-            username : username,
-            email : email,
-            password : password,
-            type: type
+            username: username,
+            password: password,
+            email: email,
+            profileImage: "",
+            ownedCars: [],
+            rentedCars: [],
+            favoriteCars: []
         }
         try{
             const response = await fetch(User.db+"/users", {
@@ -65,7 +68,7 @@ export default class User{
                 throw new Error(`HTTP Error! status ${response.status}`)
             }
             const data = await response.json();
-            return data;
+            return new user(data.id, data.username, data.email, data.profileImage, data.ownedCars, data.rentedCars, data.favoriteCars);
         } catch (error){
             console.error(`Error \n ${error}`)
             return null
