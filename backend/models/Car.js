@@ -1,5 +1,6 @@
 export default class Car{
-    constructor(id, name, type, totalPrice, image, litersCapacity, isFavorite, isManual, capacity, discount = 0){
+        isRented = false;
+    constructor(id, name, type, totalPrice, image, litersCapacity, isFavorite, isManual, capacity, discount, ownerId){
         this.id = id;
         this.name = name;
         this.type = type;
@@ -11,8 +12,12 @@ export default class Car{
         this.capacity = capacity;
         this.discount = discount;
         this.isFavorite = isFavorite;
+        this.ownerId = ownerId;
     }
     getCarCard(){
+        if(this.isRented){
+            return null
+        }
         let spanDiscount = this.discount != 0 ? `<span class="secondary-text discount-text">${this.totalPrice}.00</span>`: "";
         const carHTML = document.createElement("div"); carHTML.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-3");
         carHTML.innerHTML = `
@@ -63,7 +68,7 @@ export default class Car{
             return null
         }
         for (const c of cars){
-            const newCar = new Car(c.id, c.name, c.type, c.totalPrice, c.image, c.litersCapacity, false, c.isManual, c.capacity, c.discount)
+            const newCar = new Car(c.id, c.name, c.type, c.totalPrice, c.image, c.litersCapacity, false, c.isManual, c.capacity, c.discount, c.ownerId)
             carArray.push(newCar)
         }
         return carArray;

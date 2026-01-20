@@ -1,7 +1,4 @@
-import Car from "../../../backend/models/Car.js";
-import API from "../../../backend/api/api.js";
-import Alert from "../../../backend/models/alerts.js";
-import { debounce } from "../../../backend/models/functions.js";
+import Car from "../../../backend/models/Car.js"; import API from "../../../backend/api/api.js"; import Alert from "../../../backend/utils/alerts.js"; import { debounce } from "../../../backend/utils/functions.js";
 const db = new API(); //API
 const inputNameCar = document.getElementById("inputNameCar");
 const inputTypeCar = document.getElementById("inputTypeCar");
@@ -21,8 +18,7 @@ const getAllCars = async ()=>{
         document.querySelector("#table-cars tbody").appendChild(tr);
     }
 }
-
-console.log(await getAllCars())
+await getAllCars()
 const verifyContent = (event)=>{
     check = true;
     let RegexPositiveInteger = /^[1-9]\d*$/;
