@@ -14,7 +14,6 @@ form.addEventListener("submit",async e=>{
         passwordInput.nextElementSibling.classList.remove("hidden");
     } else{
         sessionStorage.setItem("user", JSON.stringify(user));
-        console.log("exectued");
         window.location = "./index.html";
     }
 })

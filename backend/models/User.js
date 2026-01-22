@@ -74,6 +74,26 @@ export default class User{
             return null
         }
     }
+    set profileImage(profileImage){
+        let regex =  /^(?!.*\s).+\.(jpg|jpeg|svg|webp|png|gif)$/i;
+        if(regex.test(profileImage)){
+            this.profileImage = profileImage;
+        }else{
+            throw new Error("Invalid URL");
+        }
+    }
+    set password(password){
+        this.password = password;
+    }
+    changePassword(oldPassword, newPassword){
+        if(oldPassword === newPassword){
+            throw new Error("The password can't be the same")
+        } else if(oldPassword !== this.password){
+            throw new Error("The passwords don't match")
+        } else{
+            this.password =  newPassword;
+        }
+    }
     logOut(){
         //code to log out
     }
